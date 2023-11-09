@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoAR</title>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+      model-viewer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+
+      .animation-buttons {
+        position: absolute;
+        bottom: 100px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        width: 100px;
+        padding: 15px;
+      }
+    </style>
+
+</head>
+<body>
+    <model-viewer 
+   
+    camera-controls touch-action="pan-y" autoplay ar ar-modes="webxr scene-viewer" scale="0.2 0.2 0.2" shadow-intensity="1" src="models/RobotExpressive.glb" alt="An animated 3D model of a robot"
+    animation-name="Wave"></model-viewer>
+
+    <div class="animation-buttons">
+        <button onclick="changeAnimation('Dance')">Dance</button>
+        <button onclick="changeAnimation('Death')">Death</button>
+        <button onclick="changeAnimation('Punch')">Punch</button>
+        <button onclick="changeAnimation('Running')">Running</button>
+    </div>
+
+    <script>
+        const modelViewer = document.querySelector("model-viewer")
+
+       function changeAnimation(name){
+        modelViewer.animationName = name
+       }
+    </script>
+</body>
+</html>
